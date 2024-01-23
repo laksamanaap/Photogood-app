@@ -8,7 +8,7 @@ import {
   StyleSheet,
   Image,
 } from "react-native";
-import SvgUri from "react-native-svg"; // This component is part of 'react-native-svg'
+import AntDesign from "react-native-vector-icons/AntDesign";
 
 export default function App() {
   const [username, setUsername] = useState("");
@@ -17,6 +17,15 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <Image
+        style={{
+          width: 100,
+          height: 100,
+          resizeMode: "cover",
+          marginBottom: 45,
+        }}
+        source={require("./assets/icon/logo2.png")}
+      />
       <View style={styles.inputContainer}>
         <Text style={styles.label}>Username</Text>
         <TextInput
@@ -56,6 +65,7 @@ export default function App() {
       </View>
       <View style={styles.OAuthContainer}>
         <TouchableOpacity style={styles.OAuthButton}>
+          <AntDesign name="google" style={{ color: "#A9329D", fontSize: 20 }} />
           <Text
             style={{
               color: "black",
@@ -70,6 +80,10 @@ export default function App() {
       </View>
       <View style={styles.OAuthContainer}>
         <TouchableOpacity style={styles.OAuthButton}>
+          <AntDesign
+            name="facebook-square"
+            style={{ color: "#A9329D", fontSize: 20 }}
+          />
           <Text
             style={{
               color: "black",
@@ -81,6 +95,9 @@ export default function App() {
             Facebook
           </Text>
         </TouchableOpacity>
+      </View>
+      <View>
+        <Text style={styles.OAuthDesc}>Sudah punya akun? Login</Text>
       </View>
     </View>
   );
@@ -122,6 +139,9 @@ const styles = StyleSheet.create({
     marginBottom: 18,
   },
   OAuthDesc: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     marginTop: 15,
     marginBottom: 15,
     color: "#6B6B6B",
@@ -133,6 +153,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: "100%",
     backgroundColor: "#F9F9F9",
+    gap: 8,
     padding: 10,
     borderRadius: 50,
   },
