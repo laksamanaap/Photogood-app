@@ -1,11 +1,87 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from "react";
+import { StatusBar } from "expo-status-bar";
+import {
+  View,
+  TextInput,
+  TouchableOpacity,
+  Text,
+  StyleSheet,
+  Image,
+} from "react-native";
+import SvgUri from "react-native-svg"; // This component is part of 'react-native-svg'
 
 export default function App() {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <View style={styles.inputContainer}>
+        <Text style={styles.label}>Username</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Username"
+          value={username}
+          onChangeText={(text) => setUsername(text)}
+        />
+      </View>
+      <View style={styles.inputContainer}>
+        <Text style={styles.label}>Email</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          value={email}
+          onChangeText={(text) => setEmail(text)}
+          keyboardType="email-address"
+        />
+      </View>
+      <View style={styles.inputContainer}>
+        <Text style={styles.label}>Password</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Password"
+          value={password}
+          onChangeText={(text) => setPassword(text)}
+          secureTextEntry={true}
+        />
+      </View>
+      <TouchableOpacity style={styles.button}>
+        <Text style={{ color: "white", textAlign: "center", fontSize: 16 }}>
+          Daftar
+        </Text>
+      </TouchableOpacity>
+      <View>
+        <Text style={styles.OAuthDesc}>Atau masuk menggunakan</Text>
+      </View>
+      <View style={styles.OAuthContainer}>
+        <TouchableOpacity style={styles.OAuthButton}>
+          <Text
+            style={{
+              color: "black",
+              textAlign: "center",
+              fontSize: 16,
+              fontWeight: "500",
+            }}
+          >
+            Google
+          </Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.OAuthContainer}>
+        <TouchableOpacity style={styles.OAuthButton}>
+          <Text
+            style={{
+              color: "black",
+              textAlign: "center",
+              fontSize: 16,
+              fontWeight: "500",
+            }}
+          >
+            Facebook
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -13,8 +89,51 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "white",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 40,
+  },
+  inputContainer: {
+    width: "100%",
+  },
+  label: {
+    marginBottom: 10,
+    color: "#333",
+  },
+  input: {
+    backgroundColor: "#D9D9D9",
+    height: 40,
+    width: "100%",
+    borderColor: "#D9D9D9",
+    borderWidth: 1,
+    marginBottom: 25,
+    padding: 10,
+    borderRadius: 50,
+  },
+  button: {
+    width: "100%",
+    backgroundColor: "#A9329D",
+    padding: 10,
+    borderRadius: 50,
+  },
+  OAuthContainer: {
+    width: "100%",
+    marginBottom: 18,
+  },
+  OAuthDesc: {
+    marginTop: 15,
+    marginBottom: 15,
+    color: "#6B6B6B",
+  },
+  OAuthButton: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
+    backgroundColor: "#F9F9F9",
+    padding: 10,
+    borderRadius: 50,
   },
 });
