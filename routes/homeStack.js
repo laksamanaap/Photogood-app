@@ -8,9 +8,26 @@ import Register from "../screens/Register";
 const screens = {
   Register: {
     screen: Register,
+    navigationOptions: {
+      title: null,
+      headerStyle: {
+        elevation: 0,
+        shadowOpacity: 0,
+        borderBottomWidth: 0,
+      },
+    },
   },
   Login: {
     screen: Login,
+    navigationOptions: {
+      title: null,
+      headerLeft: null,
+      headerStyle: {
+        elevation: 0,
+        shadowOpacity: 0,
+        borderBottomWidth: 0,
+      },
+    },
   },
   Home: {
     screen: Home,
@@ -20,6 +37,10 @@ const screens = {
   },
 };
 
-const HomeStack = createStackNavigator(screens);
+const HomeStack = createStackNavigator(screens, {
+  screenOptions: {
+    headerShadowVisible: false,
+  },
+});
 
 export default createAppContainer(HomeStack);
