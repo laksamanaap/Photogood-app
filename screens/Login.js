@@ -9,6 +9,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   ScrollView,
+  ActivityIndicator,
 } from "react-native";
 import AntDesign from "react-native-vector-icons/AntDesign";
 
@@ -16,6 +17,17 @@ export default function Register({ navigation }) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  console.log("login username : ", username);
+
+  const handleLogin = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      navigation.push("Login");
+    }, 2000);
+  };
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -50,11 +62,16 @@ export default function Register({ navigation }) {
         </View>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate("Home")}
+          onPress={() => handleLogin()}
+          disabled={isLoading}
         >
-          <Text style={{ color: "white", textAlign: "center", fontSize: 16 }}>
-            Masuk
-          </Text>
+          {isLoading ? (
+            <ActivityIndicator size="small" color="white" />
+          ) : (
+            <Text style={{ color: "white", textAlign: "center", fontSize: 16 }}>
+              Masuk
+            </Text>
+          )}
         </TouchableOpacity>
         <View>
           <Text style={styles.OAuthDesc}>Atau masuk menggunakan</Text>

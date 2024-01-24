@@ -29,18 +29,8 @@ const screens = {
       },
     },
   },
-  Home: {
-    screen: Home,
-  },
-  Detail: {
-    screen: Detail,
-  },
 };
 
-const HomeStack = createStackNavigator(screens, {
-  screenOptions: {
-    headerShadowVisible: false,
-  },
-});
+const HomeStack = createStackNavigator(screens);
 
 export default createAppContainer(HomeStack);
