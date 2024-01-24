@@ -18,6 +18,15 @@ export default function App() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [authenticated, setAuthenticated] = useState(false);
 
-  return <AuthNavigator></AuthNavigator>;
+  return (
+    <>
+      {authenticated ? (
+        <ClientNavigator />
+      ) : (
+        <AuthNavigator setAuthenticated={setAuthenticated} />
+      )}
+    </>
+  );
 }
